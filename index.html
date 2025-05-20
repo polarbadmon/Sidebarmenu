@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Sidebar</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <form class="sidebar__form">
+            <input type="checkbox" id="open-menu">
+            <label class="material-symbols-outlined open-button" for="open-menu">arrow_menu_open</label>
+            <label class="material-symbols-outlined close-button" for="open-menu">arrow_menu_close</label>
+        </form>
+        <nav class="sidebar__nav">
+            <ul>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">home</span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">inbox</span>
+                    <a href="#">Inbox</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">workspaces</span>
+                    <a href="#">Workspaces</a>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">home_storage</span>
+                    <a href="#">Projects</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar__bottom">
+            <ul>
+                    <li class="sidebar__item">
+                    <span class="material-symbols-outlined">settings</span>
+                    <a href="#">Settings</a>
+                </li>
+                    <li class="sidebar__item">
+                    <span class="material-symbols-outlined">delete</span>
+                    <a href="#">Trash</a>
+                </li>
+                    <li class="sidebar__item">
+                    <span class="material-symbols-outlined">headset_mic</span>
+                    <a href="#">Help & Support</a>
+                </li>
+                <li class="sidebar__item item--profile">
+                    <img src="img/profile_pic.png">
+                    <span class="profile-option">Ryan Parker</span>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</body>
+</html>
