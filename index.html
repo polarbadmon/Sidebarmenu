@@ -12,50 +12,84 @@
 </head>
 <body>
     <aside class="sidebar">
-        <form class="sidebar__form">
-            <input type="checkbox" id="open-menu">
-            <label class="material-symbols-outlined open-button" for="open-menu">arrow_menu_open</label>
-            <label class="material-symbols-outlined close-button" for="open-menu">arrow_menu_close</label>
-        </form>
-        <nav class="sidebar__nav">
-            <ul>
-                <li class="sidebar__item">
-                    <span class="material-symbols-outlined">home</span>
-                    <a href="#">Home</a>
-                </li>
-                <li class="sidebar__item">
-                    <span class="material-symbols-outlined">inbox</span>
-                    <a href="#">Inbox</a>
-                </li>
-                <li class="sidebar__item">
-                    <span class="material-symbols-outlined">workspaces</span>
-                    <a href="#">Workspaces</a>
-                </li>
-                <li class="sidebar__item">
-                    <span class="material-symbols-outlined">home_storage</span>
-                    <a href="#">Projects</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="sidebar__main">
+            <form class="sidebar__form">
+                <input type="checkbox" id="open-menu">
+                <label class="material-symbols-outlined open-button" for="open-menu">arrow_menu_open</label>
+                <label class="material-symbols-outlined close-button" for="open-menu">arrow_menu_close</label>
+            </form>
+            <nav class="sidebar__top">
+                <ul class="navbar__section">
+                    <li class="sidebar__search" data-tooltip="Search">
+                        <span class="material-symbols-outlined">search</span>
+                        <a href="#">Search</a>
+                    </li>
+                    <li class="sidebar__item" data-tooltip="Inbox">
+                        <span class="material-symbols-outlined">edit_square</span>
+                        <a href="#">New</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="sidebar__personal">
+                <h2 class="section__title">Personal</h2>
+                <ul class="navbar__section">
+                    <li class="sidebar__item" data-tooltip="Home">
+                        <span class="material-symbols-outlined">home</span>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="sidebar__item" data-tooltip="Inbox">
+                        <span class="material-symbols-outlined">inbox</span>
+                        <a href="#">Inbox</a>
+                    </li>
+                    <li class="sidebar__item" data-tooltip="Workspaces">
+                        <span class="material-symbols-outlined">workspaces</span>
+                        <a href="#">Workspaces</a>
+                    </li>
+                    <li class="sidebar__item" data-tooltip="Projects">
+                        <span class="material-symbols-outlined">stacks</span>
+                        <a href="#">Projects</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar__social">
+                <h2 class="section__title">Social</h2>
+                <ul class="navbar__section">
+                    <li class="sidebar__item" data-tooltip="Teams">
+                        <span class="material-symbols-outlined">crowdsource</span>
+                        <a href="#">Teams</a>
+                    </li>
+                    <li class="sidebar__item" data-tooltip="Chat">
+                        <span class="material-symbols-outlined">chat</span>
+                        <a href="#">Chat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="sidebar__bottom">
-            <ul>
-                    <li class="sidebar__item">
+            <ul class="navbar__section">
+                <li class="sidebar__item" data-tooltip="Settings">
                     <span class="material-symbols-outlined">settings</span>
                     <a href="#">Settings</a>
                 </li>
-                    <li class="sidebar__item">
+                <li class="sidebar__item" data-tooltip="Trash">
                     <span class="material-symbols-outlined">delete</span>
                     <a href="#">Trash</a>
                 </li>
-                    <li class="sidebar__item">
+                <li class="sidebar__item" data-tooltip="Help & Support">
                     <span class="material-symbols-outlined">headset_mic</span>
                     <a href="#">Help & Support</a>
                 </li>
-                <li class="sidebar__item item--profile">
-                    <img src="img/profile_pic.png">
-                    <span class="profile-option">Ryan Parker</span>
-                </li>
             </ul>
+        </div>
+        <div class="sidebar__profile">
+            <div class="sidebar__item item--profile" data-tooltip="Profile">
+                <img src="img/profile_pic.png" alt="Profile picture">
+                <div class="profile__info">
+                    <p class="profile-option">Ryan Parker</p>
+                    <p class="profile-option-role">UX/UI Designer</p>
+                </div>   
+                <span class="material-symbols-outlined">more_vert</span>             
+            </div>
         </div>
     </aside>
 </body>

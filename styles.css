@@ -1,50 +1,76 @@
+
 * {
     box-sizing: border-box;
 }
 
-body, div, ul, li, a, h1, h2, h3, h4 {
+body, div, li, a, .section__title, .navbar__section, p {
     margin: 0;
     padding: 0;
 }
 
-label, .sidebar__nav {
+:root {
+    --bg-color: black;
+    --sidebar-color: #161617;
+}
+
+label, .sidebar__personal, .sidebar__social {
     user-select: none;
 }
 
 body {
-    --bg-color: black;
-    --sidebar-color: #161617;
     background-color: var(--bg-color);
     font-family: Inter;
     font-weight: 400;
 }
 
+.section__title {
+    font-family: Inter;
+    font-weight: 400;
+    color: #999EAA;
+    font-size: 1rem;
+} 
+
 .sidebar {
     background-color: var(--sidebar-color);
     position: fixed;
     height: 100dvh;
-    width: clamp(280px, 20vw, 300px);
+    width: clamp(280px, 25vw, 320px);
     font-size: clamp(1rem, 2.2vw, 3rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 24px;
     padding: 24px;
     border-right: 1px solid #343637;
+    transition: width 0.3s ease;
 }
 
-.sidebar__nav {
-    flex: 1;
+.sidebar__main {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 24px;
 }
 
-.sidebar__nav ul {
+.sidebar__top .navbar__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar__personal ul, .sidebar__social ul, .profile__info {
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 }
 
-.sidebar__item {
+.profile__info {
+    gap: 8px;
+}  
+
+.sidebar__item, .sidebar__search {
     list-style: none;
     display: flex;
     align-items: center;
@@ -52,27 +78,69 @@ body {
     font-size: 1rem;
     border-radius: 8px;
     position: relative;
+    cursor: pointer;
 }
 
-.sidebar__item span {
+.sidebar__search {
+    outline: 1px solid #343637;
+}
+
+.sidebar__item::after, .sidebar__search::after, .profile__info::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 12px;
+    background-color: #222;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar__item span, .sidebar__search span {
     padding: 12px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #999EAA;
 }
 
-.sidebar__item a {
+.sidebar__item a, .sidebar__search a {
     color: inherit;
     text-decoration: none;
 }
 
-.sidebar__item:hover {
-    background-color: #212123;
-    color: #FFF;
+.sidebar__search a {
+    color: #999EAA;
 }
 
-.sidebar__bottom img {
+.sidebar__profile .profile__info span {
+    font-size: 1rem;
+}
+
+.sidebar__item:hover, .sidebar__search:hover {
+    background-color: #212123;
+}
+
+.sidebar__search:hover {
+    outline: 1px solid #999EAA;
+}
+
+.sidebar__search:hover a {
+    color: #fff;
+}
+
+.sidebar__profile img {
     border-radius: 50%;
-    width: 2rem;
+    width: 1.5rem;
+    margin-right: 12px;
+    outline: 1px solid #343637;
 }
 
 .item--profile .profile-option {
@@ -80,24 +148,29 @@ body {
     color: #FFF; 
 }
 
+.profile-option-role {
+    color: #999EAA;
+}
+
 .item--profile {
-    padding: 10px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
 }
 
 input[type="checkbox"] {
     display: none;
 }
 
-.item__content {
-    display: flex;
-    flex-direction: column;
-    margin-left: 12px;
-}
-
+.sidebar__item a,
+.sidebar__search a,
+.profile-option,
+.profile-option-role
 .item-subtitle {
-    font-size: 1rem;
-    color: #999EAA;
-    margin-top: 4px;
+    display: inline-block;
+    min-width: 0;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .sidebar__form {
@@ -114,6 +187,7 @@ input[type="checkbox"] {
 .sidebar__form .close-button {
     margin-left: auto;
     padding: 8px;
+    cursor: pointer;
 }
 
 .sidebar label {
@@ -135,7 +209,7 @@ input[type="checkbox"]:checked ~ label::before {
 }
 
 .sidebar:has(input[type="checkbox"]:checked) {
-    width: fit-content;
+    width: 100px;
 }
 
 .sidebar:has(input[type="checkbox"]:checked) .sidebar__form label {
@@ -146,6 +220,21 @@ input[type="checkbox"]:checked ~ label::before {
     display: block;
 }
 
-.sidebar:has(input[type="checkbox"]:checked) :is(.sidebar__item a, .profile-option, .item-subtitle) {
-    display: none;
+.sidebar:has(input[type="checkbox"]:checked) :is(.sidebar__item a, .sidebar__search a, .profile-option, .item-subtitle, .section__title, .profile__info, .sidebar__profile span) {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__item:hover::after, .sidebar__search:hover::after {
+    opacity: 1;
+}
+
+.sidebar:not(:has(input[type="checkbox"]:checked)) .sidebar__search:hover::after {
+    opacity: 0;
+}
+
+.sidebar:not(:has(input[type="checkbox"]:checked)) .sidebar__item a, .profile__info p {
+    white-space: nowrap;
 }
